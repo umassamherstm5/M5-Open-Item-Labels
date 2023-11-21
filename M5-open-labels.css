@@ -30,7 +30,9 @@
     /* --title-background-color: yellow; */
     --title-font-size: 12pt;
     --title-font-weight: bold;
-    --title-font-family: 'Roboto Mono';
+    --title-font-family: 'Roboto Mono'
+        /*do not include more than 1 font here*/
+    ;
     --title-word-spacing: -2pt;
 
     /* --title-border-width: 4px; */
@@ -44,14 +46,18 @@
     --enable-title-border-right: 0;
 
     /* --- front style --- */
-    --front-font-family: 'Ubuntu Mono';
+    --front-font-family: 'Ubuntu Mono'
+        /*do not include more than 1 font here*/
+    ;
     --front-font-size: 12pt;
     --front-font-weight: normal;
     --front-font-color: black;
     --front-word-spacing: 0pt;
 
     /* --- left style --- */
-    --left-font-family: 'Atkinson Hyperlegible';
+    --left-font-family: 'Atkinson Hyperlegible'
+        /*do not include more than 1 font here*/
+    ;
     --left-font-weight: normal;
     --left-font-color: black;
     --grayed-out: lightgray;
