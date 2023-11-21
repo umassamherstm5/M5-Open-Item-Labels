@@ -2,17 +2,16 @@
 
 # M5 Open Labels
 
-M5 Open Labels is the HTML, CSS, and Related Documentation used for generating bin labels for the [UMass Amherst M5 Makerspace](https://www.umassamherstm5.org/).
+M5 Open Labels is the HTML, CSS, Tools, and Related Documentation used for generating bin labels for the [UMass Amherst M5 Makerspace](https://www.umassamherstm5.org/).
 
-M5 Labels are generated as HTML files using using the structure and CSS provided in this repository (see : ./examples/format.html). The HTML files are printed using a browser (e.g. Chrome) and cut to size.
+M5 Labels are generated as HTML with the format and CSS provided in this repository (see : ./examples/format.html for basics). The HTML files are printed using a browser (e.g. Chrome) and cut to size.
 
 ## Eample Label
-
+<img width="686" alt="Screenshot 2023-11-20 at 15 36 22 copy" src="https://github.com/umassamherstm5/M5-Open-Labels/assets/39284876/fff12bd4-71ee-4c1f-b51b-82a873c5b5ee">
 
 ## Design and Use
 
 As of v0.4.0 (2023nov20), the labels are designed to be printed on 8.5" x 11" paper and cut to size; best results have been achieved with Cardstock.
-
 
 ### Attaching to M5 Parts Wall Bins (CMST40730 Drawers)
 This is intedned to be attached:
