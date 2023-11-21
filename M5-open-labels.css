@@ -7,7 +7,7 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.5";
+    --label-version: "v0.5.1";
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -36,9 +36,9 @@
 
     /* ENABLED = 1 , DISBABLED = 0 */
     --enable-title-border-top: 1;
-    --enable-title-border-bottom: 1;
-    --enable-title-border-left: 1;
-    --enable-title-border-right: 1;
+    --enable-title-border-bottom: 0;
+    --enable-title-border-left: 0;
+    --enable-title-border-right: 0;
 
     /* --- front style --- */
     --front-font-family: 'Ubuntu Mono', monospace;
@@ -319,6 +319,8 @@ panel.left label-version-format {
     grid-area: tr;
     justify-self: end;
 
+    white-space: nowrap;
+    width: min-content;
 
     font-size: var(--aside-font-size);
     font-style: italic;
