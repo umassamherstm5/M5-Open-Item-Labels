@@ -7,7 +7,7 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.5.1";
+    --label-version: "v0.5.2";
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -281,9 +281,9 @@ panel.left {
     display: grid;
     grid-template-rows: min-content min-content auto min-content;
     grid-template-areas:
-        "tl    tr"
+        "tl    tl"
         "cl    cl"
-        "  .  .  "
+        "lv   .  "
         "bl    br";
 }
 
@@ -291,6 +291,10 @@ panel.left {
 panel.left item-link {
     grid-area: tl;
     justify-self: start;
+
+    /* white-space: nowrap; */
+    /* font-family: 'Ubuntu Mono'; */
+    /* font-size: var(--secondary-font-size); */
 
     color: var(--grayed-out);
 }
@@ -316,17 +320,19 @@ panel.left label-by {
 
 
 panel.left label-version-format {
-    grid-area: tr;
-    justify-self: end;
+    grid-area: lv;
+    justify-self: start;
 
     white-space: nowrap;
     width: min-content;
 
-    font-size: var(--aside-font-size);
+
+    font-size: var(--secondary-font-size);
     font-style: italic;
 
     color: var(--grayed-out);
-    padding-right: var(--a-tad);
+    padding-right: var(--a-smidge);
+    padding-left: 0in;
 }
 
 panel.left quick-ref {
