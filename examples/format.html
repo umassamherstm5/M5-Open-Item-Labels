@@ -4,9 +4,23 @@
 <!-- Copyright: The MIT License, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Maskerspace -->
 
 <head>
-    <!-- B/C this is an EXAMPLE -->
-    <!-- TODO(Revise example) -->
+    <!-- Here, we're using a realtive path to 'M5-open-labels.css' because this is an Example -->
     <link href="../M5-open-labels.css" rel="stylesheet" />
+
+    <!-- NOTE: When using this outside of an example, it is recommended that you host the css file yourself -->
+    <!-- Or, while it is not recommended, the below script should work (NOTE: it relies on GitHub hosting the content) -->
+    <!-- 
+    <script>
+        // request the css file from github
+        var xmlReq = new XMLHttpRequest();
+        xmlReq.open("GET", "https://raw.githubusercontent.com/umassamherstm5/M5-Open-Labels/static/v0_4/M5-open-labels.css", false);
+        xmlReq.send();
+        // since its mime type isn't guaranteed to be css, we'll add it's content as an embeded style tag
+        var style = document.createElement("style");
+        style.innerHTML = xmlReq.responseText;
+        document.head.appendChild(style);
+    </script> 
+    -->
 </head>
 
 
