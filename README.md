@@ -18,7 +18,7 @@ This is intedned to be attached:
 - as one peice of paper with the QR and Left panels on the left side of the drawers.
 - with 1" wide scotch magic tape (frosty scoth tape)
 
-1. Bend then crease the label along vertical line to the right of QR panel (so the text is facing on both sides of the bend).
+1. Bend then crease the label along vertical line to the right of QR panel (so the text is facing out on both sides of the bend).
 2. It should be able to be attached with three pieces of tape 1":
   - `1x ~4 inch` lenth piece of tape
     - place horizontally a the 1" edge of the tape starting from inside left edge of the QR code.
