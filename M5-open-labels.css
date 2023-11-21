@@ -7,7 +7,7 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.5.2";
+    --label-version: "v0.5.3";
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -55,7 +55,7 @@
 
     --primary-font-size: 12pt;
     --secondary-font-size: 11pt;
-    --aside-font-size: 9pt;
+    --aside-font-size: 8pt;
 
     /* --- content configuration --- */
     --label-version-prefix: "label-format-";
@@ -281,12 +281,15 @@ panel.left {
     display: grid;
     grid-template-rows: min-content min-content auto min-content;
     grid-template-areas:
-        "tl    tl"
-        "cl    cl"
-        "lv   .  "
-        "bl    br";
+        "tl  tl  lv"
+        "cl  cl  cl"
+        " .  .   . "
+        "bl  .   br";
 }
 
+panel.left > * {
+    white-space: nowrap;
+}
 
 panel.left item-link {
     grid-area: tl;
@@ -321,13 +324,11 @@ panel.left label-by {
 
 panel.left label-version-format {
     grid-area: lv;
-    justify-self: start;
+    justify-self: end;
 
-    white-space: nowrap;
     width: min-content;
 
-
-    font-size: var(--secondary-font-size);
+    font-size: var(--aside-font-size);
     font-style: italic;
 
     color: var(--grayed-out);
@@ -338,7 +339,7 @@ panel.left label-version-format {
 panel.left quick-ref {
     grid-area: br;
     align-self: end;
-    justify-self: start;
+    justify-self: end;
 }
 
 
