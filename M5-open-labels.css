@@ -3,10 +3,11 @@
 /* -- import fonts -- Ubuntu mono, Roboto mono, Atkinson Hyperlegible */
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Roboto+Mono:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap');
 
+
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.4";
+    --label-version: "v0.5";
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -17,6 +18,7 @@
 
     /* --- formatting --- */
     --border-width: 0.01in;
+    --outline-border-color: lightgray;
 
     /* used to adjust margins and padding */
     --a-tad: 0.05in;
@@ -29,7 +31,6 @@
     --title-font-family: 'Roboto Mono', monospace;
     --title-word-spacing: -2pt;
 
-    /* --- Title borders --- */
     --title-border-width: 2px;
     --title-border-style: solid;
 
@@ -50,7 +51,7 @@
     --left-font-family: 'Atkinson Hyperlegible', sans-serif;
     --left-font-weight: normal;
     --left-font-color: black;
-    --grayed-out: #999;
+    --grayed-out: lightgray;
 
     --primary-font-size: 12pt;
     --secondary-font-size: 11pt;
@@ -68,25 +69,40 @@
     --left-width: calc(var(--label-width) - var(--qr-size) - var(--front-width));
 }
 
-/* --- setup printing specifics --- */
 
-@page {
+/* @page {
     size: letter upright;
 
     margin-top: 1in;
     margin-bottom: 1in;
     margin-left: 0.75in;
     margin-right: 0.75in;
+} */
+
+/* --- center the labels on the page --- */
+
+body {
+    display: grid;
+    grid-template-columns: 1fr var(--label-width) 1fr;
 }
 
-/* slect every 7th child that is an item-label*/
-
-label-list item-label:nth-child(7n) {
-    page-break-after: always;
+body > * {
+    grid-column: 2;
 }
 
 
 /* --- sytling for the label --- */
+
+
+/* break every 7th child that is an item-label */
+
+label-list > item-label:nth-child(7n) {
+    page-break-after: always;
+}
+
+label-list > item-label:nth-child(7n + 1) {
+    border-top-width: var(--border-width);
+}
 
 /* here, icluding label-list means the label-list wrapper is required */
 label-list item-label {
@@ -96,9 +112,12 @@ label-list item-label {
 
     /* --- style configuration --- */
     border: solid;
-    border-color: gray;
-    border-width: var(--border-width);
-    /* background-color: red; */
+    border-color: var(--outline-border-color, lightgray);
+    border-top-width: 0px;
+    border-bottom-width: var(--border-width);
+    border-left-width: var(--border-width);
+    border-right-width: var(--border-width);
+
 
     /* --- grid configuration --- */
     display: grid;
@@ -115,8 +134,6 @@ panel {
 }
 
 panel.qr {
-    /* grid-area: qr; */
-
     /* style */
     border-left: inherit;
     border-right: inherit;
@@ -351,15 +368,33 @@ quick-ref.checkbox::before {
 
 /* ------ utility classes ------ */
 
-info.doc-qr::before {
-    content: "M5 Open Labels | Documentation/Instructions: " URL(https://chart.googleapis.com/chart?choe=UTF-8&cht=qr&chld=L&chs=77x77&chl=https%3A%2F%2Fgithub.com%2Fumassamherstm5%2FM5-Open-Labels) "";
-    max-height: 0.5in;
+
+info.print-instructions {
+    display: grid;
+    grid-template-columns: 1fr auto;
 }
 
-info.doc-link::before {
-    content: "M5 Open Labels | Documentation/Instructions: https://github.com/umassamherstm5/M5-Open-Labels";
-    max-height: 0.5in;
+info.print-instructions::before {
+    font-family: 'Roboto Mono';
+    font-size: 0.14in;
+    /* WARNING: this content uses the &nbsp; symbol typed directly into the text, beware! ~Jay */
+    width: var(--label-width);
+    white-space: pre-line;
+    /* enable the \000A (newline) escaptes to break the text */
+    content:
+        '# Print Instructions (M5 Open Labels)'
+        '\000A - print single sided with 100% scale on Chrome (tested on version 119).'
+        '\000A - use 8.5 x 11" Cardstock on the "best" media quality'
+        '\000A - [To Check] the markings at the top of this should all be 1" wide when printed.';
+    color: gray;
+    margin-top: var(--a-smidge);
+    margin-bottom: var(--a-tad);
 }
+
+/* info.print-instructions::after {
+    justify-self: end;
+    content: TODO(QR LINK TO THE PRINT ORDER FORM FROM THE PROTAL (allow any url as input);
+} */
 
 measure.inch-rule {
     display: grid;

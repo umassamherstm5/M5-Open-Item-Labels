@@ -11,9 +11,9 @@ M5 Labels are generated as HTML with the format and CSS provided in this reposit
 
 ## Design and Use
 
-As of v0.4.0 (2023nov20), the labels are designed to be printed on 8.5" x 11" paper and cut to size; best results have been achieved with Cardstock.
+The labels are designed to be printed on 8.5" x 11" paper and cut to size; best results have been achieved with Cardstock.
 
-### Attaching to M5 Parts Wall Bins (CMST40730 Drawers)
+## Tape Instructions for M5 Parts Wall Bins (CMST40730 Drawers)
 This is intedned to be attached:
 - as one peice of paper with the QR and Left panels on the left side of the drawers.
 - with 1" wide scotch magic tape (frosty scoth tape)
@@ -41,9 +41,12 @@ Each label is 7" by 1" and was deisnged to fit on:
 Of course theses can be used with other bins, but the QR code may not be in the most convenient location.
 
 ## Browser Compatibliity
-As of v0.4.0 (2023nov20), the labels have been tested on the following browsers:
+As of v0.5.0 (2023nov20), the labels have been tested successfully on the following browsers:
 - **Google Chrome:** Version 119 (Official Build)
+
+known **not**-compatible browsers:
 - **Safari (on macOS):**  Version: 16.6 (1861)
+- **Firefox:** Version: 118 (64-bit)
 
 
 ## Known issues 
