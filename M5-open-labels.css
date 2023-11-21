@@ -1,4 +1,4 @@
-/*  Copyright: All-Rights-Reserved, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Maskerspace */
+/*  Copyright: The MIT License, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Maskerspace */
 
 /* -- import fonts -- Ubuntu mono, Roboto mono, Atkinson Hyperlegible */
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Roboto+Mono:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap');
@@ -6,7 +6,7 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.3";
+    --label-version: "v0.4";
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -24,12 +24,20 @@
 
     /* --- title style --- */
     --title-font-color: #306ABC;
-    --title-border-top: solid;
-    --title-border-width: 2px;
     --title-font-size: 12pt;
     --title-font-weight: bold;
     --title-font-family: 'Roboto Mono', monospace;
     --title-word-spacing: -2pt;
+
+    /* --- Title borders --- */
+    --title-border-width: 2px;
+    --title-border-style: solid;
+
+    /* ENABLED = 1 , DISBABLED = 0 */
+    --enable-title-border-top: 1;
+    --enable-title-border-bottom: 1;
+    --enable-title-border-left: 1;
+    --enable-title-border-right: 1;
 
     /* --- front style --- */
     --front-font-family: 'Ubuntu Mono', monospace;
@@ -148,7 +156,7 @@ panel.front {
     font-size: var(--front-font-size);
     font-weight: var(--front-font-weight);
     color: var(--front-font-color);
-    word-spacing: var(--front-word-spacing, 0px);
+    word-spacing: var(--front-word-spacing, 0pt);
 
     /* --- grid --- */
     display: grid;
@@ -156,15 +164,17 @@ panel.front {
 }
 
 
-panel.front *,
+panel.front desc,
 panel.front desc * {
     padding-left: var(--a-smidge);
     padding-right: var(--a-smidge);
     width: calc(var(--front-width) - 2*var(--a-smidge));
 
+
     /* --- style --- */
     display: block;
     text-align: center;
+    justify-self: center;
 
     /* enforce single line */
     white-space: nowrap;
@@ -177,6 +187,50 @@ panel.front desc * {
 }
 
 
+panel.front label-title {
+    /* grid-area: bottom; */
+    grid-row: 3;
+    justify-self: center;
+    text-align: center;
+
+
+    /* --- style --- */
+    word-spacing: var(--title-word-spacing);
+
+    font-size: var(--title-font-size);
+    font-weight: var(--title-font-weight);
+    font-family: var(--title-font-family);
+
+    color: var(--title-font-color);
+
+
+    /* --- size --- */
+    margin: 0in;
+    margin-top: var(--a-smidge);
+
+    padding: 0in;
+
+    --tbw: var(--title-border-width, 2px);
+    --etbl: var(--enable-title-border-left, 0);
+    --etbr: var(--enable-title-border-right, 0);
+    --etbt: var(--enable-title-border-top, 0);
+    --etbb: var(--enable-title-border-bottom, 0);
+
+    width: calc(100% - var(--tbw)*(var(--etbl, 0) + var(--etbr, 0)));
+
+
+    /* --- title borders --- */
+    border-style: var(--title-border-style, solid);
+    border-color: var(--title-font-color);
+
+    /* title border width*/
+    /* there have to be set after the other border related properties */
+    border-left-width: calc(var(--tbw) * var(--etbl));
+    border-right-width: calc(var(--tbw) * var(--etbr));
+    border-top-width: calc(var(--tbw) * var(--etbt));
+    border-bottom-width: calc(var(--tbw) * var(--etbb));
+}
+
 panel.front markings {
     grid-row: 1;
     /* justify-self: center; */
@@ -187,22 +241,6 @@ panel.front desc {
     grid-row: 2;
 }
 
-
-panel.front label-title {
-    /* grid-area: bottom; */
-    grid-row: 3;
-    justify-self: center;
-    margin-top: var(--a-smidge);
-
-    /* --- style --- */
-    word-spacing: var(--title-word-spacing);
-    font-size: var(--title-font-size);
-    font-weight: var(--title-font-weight);
-    font-family: var(--title-font-family);
-    color: var(--title-font-color);
-    border-top: var(--title-border-top);
-    border-width: var(--title-border-width);
-}
 
 /* ------ left panel ------ */
 
@@ -220,7 +258,7 @@ panel.left {
     font-size: var(--primary-font-size);
     font-weight: var(--left-font-weight);
     color: var(--left-font-color);
-    word-spacing: var(--left-word-spacing, 0px);
+    word-spacing: var(--left-word-spacing, 0pt);
 
     /* --- grid --- */
     display: grid;
@@ -312,6 +350,17 @@ quick-ref.checkbox::before {
 }
 
 /* ------ utility classes ------ */
+
+info.doc-qr::before {
+    content: "M5 Open Labels | Documentation/Instructions: " URL(https://chart.googleapis.com/chart?choe=UTF-8&cht=qr&chld=L&chs=77x77&chl=https%3A%2F%2Fgithub.com%2Fumassamherstm5%2FM5-Open-Labels) "";
+    max-height: 0.5in;
+}
+
+info.doc-link::before {
+    content: "M5 Open Labels | Documentation/Instructions: https://github.com/umassamherstm5/M5-Open-Labels";
+    max-height: 0.5in;
+}
+
 measure.inch-rule {
     display: grid;
     padding-bottom: 1em;
