@@ -1,4 +1,4 @@
-/*  Copyright: The MIT License, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Maskerspace */
+/*  Copyright: The MIT License, 2023 Jonah Yolles-Murphy for M5, the ECE Makerspace at UMass Amherst */
 
 /* -- import fonts -- Ubuntu mono, Roboto mono, Atkinson Hyperlegible */
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Roboto+Mono:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&display=swap');
@@ -25,12 +25,15 @@
     --a-smidge: 0.02in;
 
     /* --- title style --- */
+    /* --title-font-color: black; */
     --title-font-color: #306ABC;
+    /* --title-background-color: yellow; */
     --title-font-size: 12pt;
     --title-font-weight: bold;
-    --title-font-family: 'Roboto Mono', monospace;
+    --title-font-family: 'Roboto Mono';
     --title-word-spacing: -2pt;
 
+    /* --title-border-width: 4px; */
     --title-border-width: 2px;
     --title-border-style: solid;
 
@@ -41,14 +44,14 @@
     --enable-title-border-right: 0;
 
     /* --- front style --- */
-    --front-font-family: 'Ubuntu Mono', monospace;
+    --front-font-family: 'Ubuntu Mono';
     --front-font-size: 12pt;
     --front-font-weight: normal;
     --front-font-color: black;
     --front-word-spacing: 0pt;
 
     /* --- left style --- */
-    --left-font-family: 'Atkinson Hyperlegible', sans-serif;
+    --left-font-family: 'Atkinson Hyperlegible';
     --left-font-weight: normal;
     --left-font-color: black;
     --grayed-out: lightgray;
@@ -78,6 +81,14 @@
     margin-left: 0.75in;
     margin-right: 0.75in;
 } */
+
+/* keep background colors when printing */
+/* body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+} */
+
+/* reference: https://stackoverflow.com/questions/3893986 */
 
 /* --- center the labels on the page --- */
 
@@ -212,13 +223,14 @@ panel.front label-title {
 
 
     /* --- style --- */
-    word-spacing: var(--title-word-spacing);
+    word-spacing: var(--title-word-spacing, 0);
 
-    font-size: var(--title-font-size);
+    font-size: var(--title-font-size, 12pt);
     font-weight: var(--title-font-weight);
     font-family: var(--title-font-family);
 
     color: var(--title-font-color);
+    /* background-color: var(--title-background-color, white); */
 
 
     /* --- size --- */
@@ -279,6 +291,7 @@ panel.left {
 
     /* --- grid --- */
     display: grid;
+    /* grid-template-columns: auto auto 1in; */
     grid-template-rows: min-content min-content auto min-content;
     grid-template-areas:
         "tl  tl  lv"
@@ -294,6 +307,8 @@ panel.left > * {
 panel.left item-link {
     grid-area: tl;
     justify-self: start;
+    /* font-family: 'Ubuntu Mono';
+    font-size: var(--primary-font-size); */
 
     /* white-space: nowrap; */
     /* font-family: 'Ubuntu Mono'; */
@@ -366,14 +381,22 @@ prompt.zone-id::before {
 
 prompt.zone-id[data-note]::after {
     content: " (" attr(data-note)")";
+    /* font-size: var(--secondary-font-size); */
 }
 
 quick-ref.checkbox::before {
+    /* font-family: 'Roboto Mono'; */
     display: inline-flex;
     content: "☐";
     line-height: 0;
+    /* font-size: 20pt; */
     font-size: 18pt;
 }
+
+/* panel.left quick-ref {
+    width: 1in !important;
+    color: red !important;
+} */
 
 /* ------ utility classes ------ */
 

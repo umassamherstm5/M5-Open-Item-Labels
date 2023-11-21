@@ -1,4 +1,4 @@
-<!-- Copyright: The MIT License, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Maskerspace -->
+<!-- Copyright: The MIT License, 2023 Jonah Yolles-Murphy for the UMass Amherst M5 Makerspace -->
 
 # M5 Open Labels
 
