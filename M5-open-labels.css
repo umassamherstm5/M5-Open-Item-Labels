@@ -7,7 +7,7 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v0.5.3";
+    --label-version: "v1.0  "; /* this, for now, has two `&nbsp;` at the end for future use*/
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -26,8 +26,11 @@
 
     /* --- title style --- */
     /* --title-font-color: black; */
-    --title-font-color: #306ABC;
+    /* --title-font-color: #306ABC; */
     /* --title-background-color: yellow; */
+    --title-background-color: #306ABC;
+    --title-font-color: white;
+    --title-border-color: white;
     --title-font-size: 12pt;
     --title-font-weight: bold;
     --title-font-family: 'Roboto Mono'
@@ -35,8 +38,8 @@
     ;
     --title-word-spacing: -2pt;
 
-    /* --title-border-width: 4px; */
-    --title-border-width: 2px;
+    --title-border-width: 4px;
+    /* --title-border-width: 2px; */
     --title-border-style: solid;
 
     /* ENABLED = 1 , DISBABLED = 0 */
@@ -60,7 +63,7 @@
     ;
     --left-font-weight: normal;
     --left-font-color: black;
-    --grayed-out: lightgray;
+    --grayed-out: rgb(127, 127, 127);
 
     --primary-font-size: 12pt;
     --secondary-font-size: 11pt;
@@ -89,10 +92,10 @@
 } */
 
 /* keep background colors when printing */
-/* body {
+body {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-} */
+}
 
 /* reference: https://stackoverflow.com/questions/3893986 */
 
@@ -231,12 +234,12 @@ panel.front label-title {
     /* --- style --- */
     word-spacing: var(--title-word-spacing, 0);
 
-    font-size: var(--title-font-size, 12pt);
+    font-size: var(--title-font-size);
     font-weight: var(--title-font-weight);
     font-family: var(--title-font-family);
 
     color: var(--title-font-color);
-    /* background-color: var(--title-background-color, white); */
+    background-color: var(--title-background-color, white);
 
 
     /* --- size --- */
@@ -256,7 +259,7 @@ panel.front label-title {
 
     /* --- title borders --- */
     border-style: var(--title-border-style, solid);
-    border-color: var(--title-font-color);
+    border-color: var(--title-border-color, var(--title-font-color));
 
     /* title border width*/
     /* there have to be set after the other border related properties */
@@ -279,7 +282,7 @@ panel.front desc {
 
 /* ------ left panel ------ */
 
-panel.left {
+panel.quick-info {
     /* --- size --- */
     padding-left: var(--a-tad);
     padding-right: var(--a-tad);
@@ -297,24 +300,24 @@ panel.left {
 
     /* --- grid --- */
     display: grid;
-    /* grid-template-columns: auto auto 1in; */
+    grid-template-columns: auto auto 1in;
     grid-template-rows: min-content min-content auto min-content;
     grid-template-areas:
         "tl  tl  lv"
         "cl  cl  cl"
         " .  .   . "
-        "bl  .   br";
+        "bl  br   br";
 }
 
-panel.left > * {
+panel.quick-info > * {
     white-space: nowrap;
 }
 
-panel.left item-link {
+panel.quick-info item-link {
     grid-area: tl;
     justify-self: start;
-    /* font-family: 'Ubuntu Mono';
-    font-size: var(--primary-font-size); */
+    font-family: 'Ubuntu Mono';
+    /* font-size: var(--primary-font-size); */
 
     /* white-space: nowrap; */
     /* font-family: 'Ubuntu Mono'; */
@@ -323,18 +326,18 @@ panel.left item-link {
     color: var(--grayed-out);
 }
 
-panel.left prompt {
+panel.quick-info prompt {
     grid-area: bl;
     align-self: end;
     justify-self: start;
 }
 
-panel.left prompt[data-note]::after {
+panel.quick-info prompt[data-note]::after {
     color: var(--grayed-out);
     font-style: italic;
 }
 
-panel.left label-by {
+panel.quick-info label-by {
     grid-area: cl;
 
     font-style: italic;
@@ -343,7 +346,7 @@ panel.left label-by {
 }
 
 
-panel.left label-version-format {
+panel.quick-info label-version-format {
     grid-area: lv;
     justify-self: end;
 
@@ -357,10 +360,10 @@ panel.left label-version-format {
     padding-left: 0in;
 }
 
-panel.left quick-ref {
+panel.quick-info quick-ref {
     grid-area: br;
     align-self: end;
-    justify-self: end;
+    justify-self: start;
 }
 
 
@@ -387,19 +390,19 @@ prompt.zone-id::before {
 
 prompt.zone-id[data-note]::after {
     content: " (" attr(data-note)")";
-    /* font-size: var(--secondary-font-size); */
+    font-size: var(--secondary-font-size);
 }
 
 quick-ref.checkbox::before {
     /* font-family: 'Roboto Mono'; */
     display: inline-flex;
-    content: "☐";
+    content: " ☐";
     line-height: 0;
     /* font-size: 20pt; */
     font-size: 18pt;
 }
 
-/* panel.left quick-ref {
+/* panel.quick-info quick-ref {
     width: 1in !important;
     color: red !important;
 } */
