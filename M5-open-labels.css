@@ -7,7 +7,8 @@
 /* --- configuration --- */
 :root {
     /* --- version & base --- */
-    --label-version: "v1.0  "; /* this, for now, has two `&nbsp;` at the end for future use*/
+    --label-version: "v1.1.0";
+    /* this, for now, has two `&nbsp;` at the end for future use*/
     --item-page-url-prefix: "https://m5-portal.app/item/";
 
     /* --- size --- */
@@ -113,18 +114,47 @@ body > * {
 
 /* --- sytling for the label --- */
 
+/* add deprication warning for non-class label-list usage  */
+label-list:hover::before,
+label-list > :hover::before {
+    content: "WARNING: non-class label-list will be depricated in the future, use <div class=\"label-list\"> instead";
+    color: red !important;
+    /* pop the content so it does not move the rest */
+    position: absolute;
+    margin-top: -1.5em;
+    margin-left: 0.5em;
+    font-size: 8pt;
+    font-weight: bold;
+    background-color: white;
+    padding: 0.1em;
+    border: solid;
+    border-color: red;
+    border-width: 1px;
+    border-radius: 0.1em;
+    z-index: 1;
+
+}
+
 
 /* break every 7th child that is an item-label */
+/* DEPRECATION NOTE: non-class label-list will be depricated in the future */
 
+.label-list > item-label:nth-child(7n),
 label-list > item-label:nth-child(7n) {
     page-break-after: always;
 }
 
+/* NOTE: non-class label-list will be depricated in the future */
+
+.label-list > item-label:nth-child(7n + 1),
 label-list > item-label:nth-child(7n + 1) {
     border-top-width: var(--border-width);
 }
 
 /* here, icluding label-list means the label-list wrapper is required */
+/* NOTE: non-class label-list will be depricated in the future */
+
+.label-list item-label,
 label-list item-label {
     /* --- size configuration --- */
     width: var(--label-width);
